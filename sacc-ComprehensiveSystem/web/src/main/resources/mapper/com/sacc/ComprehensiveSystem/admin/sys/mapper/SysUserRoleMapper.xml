@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sacc.comprehensivesystem.admin.sys.dao.SysUserRoleDao">
+
+    <sql id="notNullColumns">
+        <trim prefix="" suffixOverrides="," >
+            <if test="roleId !=null" >
+                role_id,
+            </if>
+            <if test="userId !=null" >
+                user_id,
+            </if>
+            <if test="createDate !=null" >
+                create_date,
+            </if>
+            <if test="createBy !=null" >
+                create_by,
+            </if>
+            <if test="updateDate !=null" >
+                update_date,
+            </if>
+            <if test="updateBy !=null" >
+                update_by,
+            </if>
+            <if test="remarks !=null" >
+                remarks,
+            </if>
+            <if test="delFlag !=null" >
+                del_flag,
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="notNullColumnsValue">
+        <trim prefix="" suffixOverrides="," >
+            <if test="roleId !=null" >
+                #{roleId},
+            </if>
+            <if test="userId !=null" >
+                #{userId},
+            </if>
+            <if test="createDate !=null" >
+                #{createDate},
+            </if>
+            <if test="createBy !=null" >
+                #{createBy},
+            </if>
+            <if test="updateDate !=null" >
+                #{updateDate},
+            </if>
+            <if test="updateBy !=null" >
+                #{updateBy},
+            </if>
+            <if test="remarks !=null" >
+                #{remarks},
+            </if>
+            <if test="delFlag !=null" >
+                #{delFlag},
+            </if>
+        </trim>
+    </sql>
+    <insert id="insertRole" parameterType="com.sacc.comprehensivesystem.admin.sys.entity.SysUserRole">
+        insert into sys_user_role(
+        <include refid="notNullColumns" />
+        ) values  (
+        <include refid="notNullColumnsValue" />
+        )
+    </insert>
+
+    <update id="updateRole" parameterType="com.sacc.comprehensivesystem.admin.sys.entity.SysUserRole">
+        update sacc_frontend.sys_user_role
+              set role_id = 3
+        where user_id=#{userId}
+    </update>
+</mapper>
